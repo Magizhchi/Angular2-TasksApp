@@ -1,0 +1,19 @@
+table tr.enable:nth-of-type(even){
+    background-color: #b2d2ff;
+}
+
+table tr.enable:nth-of-type(odd){
+    background-color: #d5e6ff;
+}
+
+table th{
+    background-color: #ffd4ea;
+}
+
+table#disableTableBackground tr{
+    background-color: #ffffff;
+}
+
+.disable {
+    background-color: #737373;
+}

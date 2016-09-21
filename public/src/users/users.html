@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="../../stylesheets/table.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>taskMS::users</title>
+</head>
+<body>
+<div style="background-color: #ffeeee; text-align: center">
+    <a href="/index.html" style="float: left; padding: 10px 0px 0px 10px">[Go Back]</a>
+    <h1>taskMS :: Manage Team</h1>
+</div>
+
+<hr>
+
+{{errorMessage}}
+<h3><b>{{formMessages}}</b></h3>
+<table>
+    <tr><th></th><th>Name</th><th>Status</th></tr>
+   <tr *ngFor="let user of users | userSort" class="{{user.class}}">
+        <input type="checkbox" [(ngModel)]="user.active" (click)="enableDisableUser(user)"/>
+        <td> {{user.first}} {{user.last}} </td>
+        <td> {{user.status}} </td>
+    </tr>
+</table>
+
+<hr>
+<div id="usersTable">
+    <table id="disableTableBackground">
+        <tr>
+            <td><input [(ngModel)]="newUser.first" type="text" placeholder="First Name"></td>
+            <td><input [(ngModel)]="newUser.last" type="text" placeholder="Last Name"></td>
+        </tr>
+    </table>
+</div>
+
+<button (click)="addUser()">Add New User</button>
+
+</body>
+</html>

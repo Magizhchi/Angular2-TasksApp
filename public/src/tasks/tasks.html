@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="../../stylesheets/table.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+</head>
+<body>
+
+<div style="background-color: #ffeeee; text-align: center">
+    <h1>taskMS</h1>
+</div>
+
+<hr>
+{{errorMessage}}
+<h3><b>{{formMessages}}</b></h3>
+
+<table id="disableTableBackground">
+    <tr>
+        <td><input [(ngModel)]="newTask.task" type="text" placeholder="Enter Task here"></td>
+        <td>
+            <select [(ngModel)]="newTask.createdBy">
+                <option *ngFor="let user of usersList" value= {{user.fullName}} >
+                    {{user.fullName}}
+                </option>
+            </select>
+        </td>
+        <td><a href="/src/users/index.html">[Manage team]</a></td>
+    </tr>
+</table>
+<button (click)="addTask()">Add Task</button> {{successMessage}}
+
+<hr>
+<div id="tasksTable">
+    <table>
+        <tr><th>Task</th><th>Assigned to</th><th>completed</th></tr>
+        <tr *ngFor="let task of tasks" class = {{task.class}}>
+            <td> {{task.task}} </td>
+            <td> {{task.createdBy}} </td>
+            <td> <select [(ngModel)]="task.completed" [disabled]="task.isCompleted">>
+                  <option value="Assigned" [disabled]="task.isAssigned">Assigned</option>
+                  <option value="In Progress" [disabled]="task.isInProgress">In Progress</option>
+                  <option value="Completed" [disabled]="task.isCompleted">Completed</option>
+            </select> </td>
+            <td style="display: {{task.display}}"><a href="#" (click)="updateTask(task)" >Update</a></td>
+        </tr>
+    </table>
+</div>
+</body>
+
+
+</html>
